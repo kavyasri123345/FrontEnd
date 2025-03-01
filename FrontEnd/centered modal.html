@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Modal</title>
+    
+
+    <!-- Open Modal Button -->
+    <button class="open-btn" onclick="openModal()">Open Modal</button>
+
+    <!-- Modal (Hidden by Default) -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal(event)">X</button>
+            <h2>Modal Title</h2>
+            <p>This is a centered modal popup.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("modalOverlay").classList.add("active");
+        }
+
+        function closeModal(event) {
+            if (event.target === document.getElementById("modalOverlay") || event.target.classList.contains("close-btn")) {
+                document.getElementById("modalOverlay").classList.remove("active");
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Button to open modal */
+        .open-btn {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .open-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Modal Background (Overlay) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Modal Box */
+        .modal {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .close-btn:hover {
+            color: black;
+        }
+
+        /* Show Modal */
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling Effect</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Parallax Container */
+        .parallax {
+            height: 100vh; /* Full viewport height */
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1px; /* Creates the 3D space for parallax */
+        }
+
+        /* Parallax Section */
+        .parallax-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d; /* Ensures child elements are in 3D space */
+        }
+
+        /* Background Layer (Moves Slower) */
+        .parallax-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transform: translateZ(-1px) scale(2); /* Moves the background further away */
+            z-index: -1; /* Places it behind the content */
+        }
+
+        /* Foreground Layer (Moves Faster) */
+        .parallax-foreground {
+            transform: translateZ(0); /* Keeps the content at the normal scroll speed */
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Different Background Images for Sections */
+        .section-1 .parallax-background {
+            background-image: url('https://www.pexels.com/collections/just-nature-zlezwqr/');
+        }
+
+        .section-2 .parallax-background {
+            background-image: url('https://www.pexels.com/photo/gray-and-brown-mountain-417173/');
+        }
+
+        .section-3 .parallax-background {
+            background-image: url('https://unsplash.com/photos/worms-eye-view-of-forest-during-day-time-19SC2oaVZW0');
+        }
+
+        /* Regular Content Section */
+        .regular-content {
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax">
+        <!-- Section 1 -->
+        <div class="parallax-section section-1">
+            <div class="parallax-background"></div>
+            <div class="parallax-foreground">
+                <h1>Welcome to Layer 1</h1>
+                <p>This is the first parallax section.</p>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="parallax-section section-2">
+            <div class="parallax-background"></div>
+            <div class="parallax-foreground">
+                <h1>Welcome to Layer 2</h1>
+                <p>This is the second parallax section.</p>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="parallax-section section-3">
+            <div class="parallax-background"></div>
+            <div class="parallax-foreground">
+                <h1>Welcome to Layer 3</h1>
+                <p>This is the third parallax section.</p>
+            </div>
+        </div>
+
+        <!-- Regular Content Section -->
+        <div class="regular-content">
+            <h2>Regular Content Section</h2>
+            <p>This is a regular content section without parallax effect.</p>
+        </div>
+    </div>
+</body>
+</html>
